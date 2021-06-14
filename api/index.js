@@ -6,16 +6,15 @@ const model = require("./model");
 
 app.use(express.json());
 app.use(cors());
+require("dotenv").config();
 
+const url = process.env.MONGODB;
 mongoose
-  .connect(
-    "mongodb+srv://jatinhemnani01:8889994742@cluster0.yzqnh.mongodb.net/notepadshare?retryWrites=true&w=majority",
-    {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      useCreateIndex: true,
-    }
-  )
+  .connect(url, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log("Connected To Database");
   })
